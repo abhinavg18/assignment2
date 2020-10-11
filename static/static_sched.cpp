@@ -36,7 +36,7 @@ pthread_mutex_t mut;
 float total_sum = 0;
 
 void *static_worker_thread(void *p){
-    Parameter *m = *(Parameter *) p;
+    Parameter *m = (Parameter *) p;
     if(0 == m->sync.compare("iteration"))
 {
   switch(m->functionid)
@@ -193,7 +193,7 @@ int main (int argc, char* argv[]) {
 
    else{
 
-     params[i].ub = j + (steps_each_thread-1);
+     params[i].ub = ni + (steps_each_thread-1);
 
     }
 
@@ -228,7 +228,7 @@ int main (int argc, char* argv[]) {
         total_sum+= params[i].sum;
     }
   }
-  cout<<step_size * total_sum;
+  std::cout<<step_size * total_sum;
   
     std::chrono::time_point<std::chrono::system_clock> end = std::chrono::system_clock::now();
     
