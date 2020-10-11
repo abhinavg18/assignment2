@@ -36,7 +36,7 @@ pthread_mutex_t mut;
 float total_sum = 0;
 
 void *static_worker_thread(void *p){
-    Parameter m = *(Parameter *) p;
+    Parameter *m = *(Parameter *) p;
     if(0 == m->sync.compare("iteration"))
 {
   switch(m->functionid)
@@ -132,7 +132,7 @@ else{
 
 
 void *static_worker_iter(void *p){
-    Parameter m = *(Parameter *) p;
+    Parameter *m = *(Parameter *) p;
     pthread_mutex_lock(&mut);
     m.global_result += tmp;
     pthread_mutex_unlock(&mut);
@@ -152,7 +152,7 @@ int main (int argc, char* argv[]) {
     
     int intensity = atoi(argv[5]);
     int num_threads = atoi(argv[6]);
-    const char *sync = argv[7];
+    const string sync = argv[7];
     
     float result = 0f;
     float step_size = (b - a) / n;
