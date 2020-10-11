@@ -130,13 +130,13 @@ else{
 
 }
 
-
+/*
 void *static_worker_iter(void *p){
-    Parameter *m = *(Parameter *) p;
+    Parameter *m = (Parameter *) p;
     pthread_mutex_lock(&mut);
     m.global_result += tmp;
     pthread_mutex_unlock(&mut);
-}
+}*/
 
 int main (int argc, char* argv[]) {
     
