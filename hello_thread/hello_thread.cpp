@@ -35,15 +35,15 @@ int main (int argc, char* argv[]) {
     struct data d[n_thread];
     
     for (int i = 0; i < n_thread; i++){
-        d[0].tid = i;
-        d[0].n_thread = n_thread;
-        pthread_create(&threads[i], NULL, print, (void *)&d[0]);
+        d[i].tid = i;
+        d[i].n_thread = n_thread;
+        pthread_create(&threads[i], NULL, print, (void *)&d[i]);
         //create the thread
     }
     
     for (int i = 0; i < n_thread; i++){
         //wait for all threads to finish
-        pthread_join(thread[i], NULL);
+        pthread_join(threads[i], NULL);
     }
     
     return 0;
