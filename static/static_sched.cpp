@@ -4,7 +4,7 @@
 #include <string.h>
 #include <chrono>
 #include <cmath>
-
+using std::string;
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -152,9 +152,9 @@ int main (int argc, char* argv[]) {
     
     int intensity = atoi(argv[5]);
     int num_threads = atoi(argv[6]);
-    const string sync = argv[7];
+    string sync = argv[7];
     
-    float result = 0f;
+    float result = 0;
     float step_size = (b - a) / n;
 	
     if(0 == sync.compare("iteration")){
@@ -228,7 +228,7 @@ int main (int argc, char* argv[]) {
         total_sum+= params[i].sum;
     }
   }
-  std::cout<<step_size * total_sum;
+ 
   
     std::chrono::time_point<std::chrono::system_clock> end = std::chrono::system_clock::now();
     
@@ -236,7 +236,7 @@ int main (int argc, char* argv[]) {
     
     
     // display result and time
-    std::cout<<total_sum<<std::endl;
+    std::cout<<total_sum*step_size<<std::endl;
     std::cerr<<elapsed_seconds.count()<<std::endl;
     
     return 0;
