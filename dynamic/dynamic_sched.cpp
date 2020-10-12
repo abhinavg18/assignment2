@@ -287,8 +287,8 @@ pthread_mutex_init(&mut, NULL);
 
   // report reult and time
   std::cout<<final_res*step_size<<std::endl;
-  std::chrono::time_point<std::chrono::system_clock> end_time = std::chrono::system_clock::now();
-  std::chrono::duration<double> elapsed_seconds = end_time-start_time;
+  std::chrono::time_point<std::chrono::system_clock> end = std::chrono::system_clock::now();
+  std::chrono::duration<double> elapsed_seconds = end-start;
   std::cerr<<elapsed_seconds.count()<<std::endl;
 
   return 0;
