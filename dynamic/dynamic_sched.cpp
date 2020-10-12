@@ -242,7 +242,7 @@ pthread_mutex_init(&mut, NULL);
      pthread_create(&ths[i], NULL, iteration_level_integration, (void*) &params[i]);
     }
     }
-    else if(0 == sync.compare("ths"))
+    else if(0 == sync.compare("thread"))
     {
      for(int i= 0; i<num_threads;i++)
       {
@@ -284,8 +284,6 @@ pthread_mutex_init(&mut, NULL);
 
     pthread_mutex_destroy(&mut);
     pthread_mutex_destroy(&mut1);
-  std::chrono::time_point<std::chrono::system_clock> end = std::chrono::system_clock::now();
-  std::chrono::duration<double> elapsed_seconds = end-start;
 
   // report reult and time
   std::cout<<final_res*step_size<<std::endl;
